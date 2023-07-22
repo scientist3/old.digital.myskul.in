@@ -36,7 +36,7 @@
 							<?php // echo form_error('cluster_head_id', '<span class="text-danger text-xs p-1">', '</span>'); ?>
 						</div>
 					</div>
-					
+
 					<div class="col-sm-12">
 						<div class="form-group">
 							<div class="ui buttons">
@@ -82,7 +82,7 @@
 								<th>
 									<?php echo display('coodinator') ?>
 								</th>
-								<!-- <th><?php echo display('date') ?></th> 
+								<!-- <th><?php echo display('date') ?></th>
 														<th><?php echo display('status') ?></th>  -->
 								<th>
 									<?php echo display('action') ?>
@@ -90,9 +90,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php if (!empty($clusters)) { ?>
-								<?php $sl = 1; ?>
-								<?php foreach ($clusters as $cluster) { ?>
+							<?php if (!empty($clusters)) {?>
+								<?php $sl = 1;?>
+								<?php foreach ($clusters as $cluster) {?>
 									<tr>
 										<td>
 											<?php echo $sl; ?>
@@ -107,7 +107,7 @@
 											<?php echo $cluster->firstname; ?>
 										</td>
 										<!-- <td><?php echo character_limiter(strip_tags($org->org), 50); ?></td>
-																		<td><?php echo date('d M Y h:i:s a', strtotime($org->datetime)); ?></td>   
+																		<td><?php echo date('d M Y h:i:s a', strtotime($org->datetime)); ?></td>
 																		<td><?php echo (($org->receiver_status == 0) ? "<i class='label label-warning'>not seen</label>" : "<i class='label label-success'>seen</label>"); ?></td>-->
 										<td class="center" width="80">
 											<a href="<?php echo base_url("dashboard_org/cluster/edit/$cluster->cluster_id") ?>"
@@ -117,9 +117,9 @@
 													class="fa fa-trash"></i></a>
 										</td>
 									</tr>
-									<?php $sl++; ?>
-								<?php } ?>
-							<?php } ?>
+									<?php $sl++;?>
+								<?php }?>
+							<?php }?>
 						</tbody>
 					</table> <!-- /.table-responsive -->
 				</div>

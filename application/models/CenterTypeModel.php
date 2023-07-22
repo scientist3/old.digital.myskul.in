@@ -4,6 +4,7 @@ class CenterTypeModel extends CI_Model
 {
 	protected $table = 'center_type';
 
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -36,6 +37,11 @@ class CenterTypeModel extends CI_Model
 		$this->db->where('ct_id', $ct_id)->delete($this->table);
 		return $this->db->affected_rows();
 	}
+
+	function get_center_as_list(): array
+	{
+		return CenterTypes::getCenterTypeAsList();
+	}
 }
 
 class CenterTypes
@@ -66,6 +72,16 @@ class CenterTypes
 				return 'Unknown';
 		}
 	}
+
+	public static function getCenterTypeAsList()
+	{
+		return [
+			"" => "Select Center Type",
+			self::CHILD_FRIENDLY_SPACE => "CHILD FRIENDLY SPACE",
+			self::ADOLESCENT_RESOURCE_CENTRE => "ADOLESCENT RESOURCE CENTRE"
+		];
+	}
+
 
 	// public static function getStatus($type)
 	// {

@@ -1,0 +1,7 @@
+{
+  "editor.defaultFormatter": "DEVSENSE.phptools-vscode",
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "editor.tabSize": 2
+}

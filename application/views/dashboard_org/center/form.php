@@ -4,51 +4,58 @@
 		<div class="panel panel-default thumbnail">
 
 			<div class="panel-heading no-print">
-				<div class="btn-group">
-					<a class="btn btn-primary" href="<?php echo base_url("dashboard_org/center") ?>"> <i class="fa fa-list"></i>
-						<?php echo display('list_center') ?>
-					</a>
-				</div>
+				<h3>
+					<i class="fa fa-list"></i> <?php echo display('add_centers') ?>
+				</h3>
 			</div>
-			<?php //echo "<pre>"; print_r($center); echo "</pre>"; ?>
+			<?php //echo "<pre>"; print_r($center); echo "</pre>"; 
+			?>
 			<div class="panel-body panel-form">
+				<?php echo form_open_multipart('dashboard_org/center/create', 'class="form-inner"') ?>
+
+				<?php echo form_hidden('center_id', $center->center_id); ?>
 				<div class="row">
-					<div class="col-md-9 col-sm-12">
 
-						<?php echo form_open_multipart('dashboard_org/center/create', 'class="form-inner"') ?>
-
-						<?php echo form_hidden('center_id', $center->center_id); ?>
-
-						<div class="form-group row">
-							<label for="center_name" class="col-xs-3 col-form-label">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="center_name">
 								<?php echo display('center_name') ?> <i class="text-danger">*</i>
 							</label>
-							<div class="col-xs-9">
-								<input name="center_name" type="text" class="form-control" id="center_name"
-									placeholder="<?php echo display('center_name') ?>" value="<?php echo $center->center_name ?>">
-							</div>
-						</div>
 
-						<div class="form-group row">
-							<label for="center_cluster_id" class="col-xs-3 col-form-label">
+							<input name="center_name" type="text" class="form-control form-control-sm" id="center_name" placeholder="<?php echo display('center_name') ?>" value="<?php echo $center->center_name ?>">
+
+						</div>
+					</div>
+
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="center_cluster_id">
 								<?php echo display('cluster') ?> <i class="text-danger">*</i>
 							</label>
-							<div class="col-xs-9">
-								<?php echo form_dropdown('center_cluster_id', $cluster_list, $center->center_cluster_id, 'class="form-control" id="center_cluster_id" '); ?>
-							</div>
+							<?php echo form_dropdown('center_cluster_id', $cluster_list, $center->center_cluster_id, 'class="form-control" id="center_cluster_id" '); ?>
 						</div>
+					</div>
 
-						<div class="form-group row">
-							<label for="center_head_id" class="col-xs-3 col-form-label">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="center_head_id">
 								<?php echo display('animator') ?> <i class="text-danger">*</i>
 							</label>
-							<div class="col-xs-9">
-								<?php echo form_dropdown('center_head_id', $animator_list, $center->center_head_id, 'class="form-control" id="center_head_id" '); ?>
-							</div>
+							<?php echo form_dropdown('center_head_id', $animator_list, $center->center_head_id, 'class="form-control" id="center_head_id" '); ?>
 						</div>
+					</div>
 
-						<div class="form-group row">
-							<div class="col-sm-offset-3 col-sm-6">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="center_type_id">
+								<?php echo display('center_type') ?> <i class="text-danger">*</i>
+							</label>
+							<?php echo form_dropdown('center_type_id', $center_type, $center->center_type_id ?? NULL, 'class="form-control" id="center_type_id" '); ?>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="form-group">
+							<div class="pull-right">
 								<div class="ui buttons">
 									<button type="reset" class="ui button">
 										<?php echo display('reset') ?>
@@ -60,26 +67,24 @@
 								</div>
 							</div>
 						</div>
-						<?php echo form_close() ?>
 					</div>
-					<div class="col-md-3"></div>
 				</div>
+				<?php echo form_close() ?>
 			</div>
 		</div>
 	</div>
+
 	<!-- Center List -->
 	<div class="col-sm-12 col-md-8">
 		<div class="panel panel-default thumbnail">
 			<div class="panel-heading">
-				<div class="btn-group">
-					<a class="btn btn-primary" href="<?php echo base_url("dashboard_org/center/create") ?>"> <i
-							class="fa fa-plus"></i>
-						<?php echo display('add_center') ?>
-					</a>
-				</div>
+				<h3>
+					<i class="fa fa-plus"></i> <?php echo display('list_center') ?>
+				</h3>
 			</div>
 
-			<?php //echo "<pre>"; print_r($centers[0]); echo "</pre>"; ?>
+			<?php //echo "<pre>"; print_r($centers[0]); echo "</pre>"; 
+			?>
 			<div class="panel-body">
 				<table width="100%" class="datatable table table-striped table-bordered table-hover">
 					<thead>
@@ -96,7 +101,7 @@
 							<th>
 								<?php echo display('animator') ?>
 							</th>
-							<!-- <th><?php echo display('date') ?></th> 
+							<!-- <th><?php echo display('date') ?></th>
 														<th><?php echo display('status') ?></th>  -->
 							<th>
 								<?php echo display('action') ?>
@@ -121,14 +126,11 @@
 										<?php echo $center->firstname; ?>
 									</td>
 									<!-- <td><?php echo character_limiter(strip_tags($org->org), 50); ?></td>
-																		<td><?php echo date('d M Y h:i:s a', strtotime($org->datetime)); ?></td>   
+																		<td><?php echo date('d M Y h:i:s a', strtotime($org->datetime)); ?></td>
 																		<td><?php echo (($org->receiver_status == 0) ? "<i class='label label-warning'>not seen</label>" : "<i class='label label-success'>seen</label>"); ?></td>-->
 									<td class="center" width="80">
-										<a href="<?php echo base_url("dashboard_org/center/edit/$center->center_id") ?>"
-											class="btn btn-xs btn-success"><i class="fa fa-edit"></i></a>
-										<a href="<?php echo base_url("dashboard_org/center/delete/$center->center_id") ?>"
-											class="btn btn-xs btn-danger" onclick="return confirm('<?php echo display('are_you_sure') ?>') "><i
-												class="fa fa-trash"></i></a>
+										<a href="<?php echo base_url("dashboard_org/center/edit/$center->center_id") ?>" class="btn btn-xs btn-success"><i class="fa fa-edit"></i></a>
+										<a href="<?php echo base_url("dashboard_org/center/delete/$center->center_id") ?>" class="btn btn-xs btn-danger" onclick="return confirm('<?php echo display('are_you_sure') ?>') "><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>
 								<?php $sl++; ?>

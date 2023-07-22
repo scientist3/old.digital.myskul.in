@@ -13,6 +13,7 @@ class CenterService
 				'center_model',
 				'user_model',
 				'cluster_model',
+				'centertypemodel',
 			)
 		);
 
@@ -44,6 +45,10 @@ class CenterService
 		return $this->CI->cluster_model->read_as_list_by_org($intOrgId);
 	}
 
+	public function fetchCenterTypeAsList()
+	{
+		return $this->CI->centertypemodel->get_center_as_list();
+	}
 }
 
 class CenterEOS
